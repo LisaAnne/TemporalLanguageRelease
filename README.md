@@ -1,5 +1,5 @@
 
-calizing Moments in Video with Temporal Language.
+# Localizing Moments in Video with Temporal Language.
 
 Hendricks, Lisa Anne, et al. "Localizing Moments in Video with Temporal Language." EMNLP (2018).
 
