@@ -18,7 +18,7 @@ License: BSD 2-Clause license
 
 ## Data
 
-Please see our TEMPO Human Language annotations [here](https://people.eecs.berkeley.edu/~lisa_anne/initial_release_data.zip).
+Please see our TEMPO Human Language and Template Language annotations [here](https://people.eecs.berkeley.edu/~lisa_anne/tempo/initial_release_data.zip).
 
 ### TEMPO Annotations
 
