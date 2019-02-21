@@ -51,15 +51,18 @@ You train and evaluate models using scripts in the ```experiments``` folder.  To
 * Model type (M): e.g., 'mllc' or 'mcn'
 * Dataset (D): 'tempoHL', 'tempoTL', or 'didemo'
 * Features (F): 'rgb' or 'flow' -- best results are achieved by training both and fusing outputs at test time
-* Tag (T): whatever you would like to name the snapshot during training.  Snapshots automatically saved in ```snapshots``` folder
+* Snapshot folder (S): Where you would like to save your snaphots.  Snapshots automatically saved in ```snapshots``` folder
 * GPU (G): which GPU to train on
 
 An example command is:
 
 ```
-./experiments/train.sh -M mllc -D Tempo-HL -F flow -T retrain_mllc_flow -G 0
+./experiments/train.sh -M mllc -D Tempo-HL -F flow -G 0
 ```
+This will train an mllc flow model.  
+
 Run ```./experiments/train.sh -H``` for help.
+
 
 **Evaluating Your Own Models**
 
