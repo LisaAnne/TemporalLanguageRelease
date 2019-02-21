@@ -132,7 +132,7 @@ for key in rgb_result_dict.keys():
     result_dict[key] = [possible_segments[i] for i in np.argsort(scores)]
    
 for dataset in eval_datasets:
-    print "##########EVALUATING FOR DATASET: %s (test; lambda = %0.02f) #####################" %(dataset[0], lam)
+    print "##########EVALUATING FOR DATASET: %s (%s; lambda = %0.02f) #####################" %(dataset[0], split, lam)
     val_data = dataset[1] 
     segments = []
     annotation_id_to_data = {} 
