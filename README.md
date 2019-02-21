@@ -27,6 +27,10 @@ Run [setup.sh](setup.sh) to download pre-extracted features, data (TEMPO-HL and 
 
 ### Training and Evaluating Models
 
+**Replicating Results**
+
+The bash scripts ```table3.sh```, ```table4.sh```, and ```table5.sh``` should replicate the results corresponding to those tables in the main paper.  The scripts call on ```experiments/eval_released.sh``` which is documented below.
+
 **Evaluating Released Models**
 
 To evaluate released models, look at ```experiments/eval_released.sh```.  This bash script takes the following inputs:
