@@ -2,11 +2,11 @@
 
 quick=false
 
-while getopts ":HG:M:D:T:S:" opt; do
+while getopts ":HG:M:D:F:S:" opt; do
   case $opt in
     H) echo "Bash script to evaluate released models on tempoTL:"
        echo ""
-       echo "   Flag 'T' (required): which mode to train (flow or rgb) "
+       echo "   Flag 'F' (required): which mode to train (flow or rgb) "
        echo ""
        echo "   Flag 'D' (required): indicate dataset tempoTL, tempoHL, or didemo"
        echo ""
@@ -27,7 +27,7 @@ while getopts ":HG:M:D:T:S:" opt; do
     ;;
     S) snapshot_folder="$OPTARG"
     ;;
-    T) mode="$OPTARG" 
+    F) mode="$OPTARG" 
     ;;
     \?) echo "Invalid option -$OPTARG" >&2
     ;;
@@ -305,3 +305,4 @@ fi
 
 echo "Trained model: " $model
 echo "On dataset: " $dataset
+echo "Snapshot tag: " $tag
