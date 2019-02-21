@@ -1,4 +1,4 @@
-# Localizing Moments in Video with Temporal Language.
+# Localizing Moments in Video with Temporal Language
 
 Hendricks, Lisa Anne, et al. "Localizing Moments in Video with Temporal Language." EMNLP (2018).
 
@@ -100,7 +100,7 @@ Note that ``setup.sh``` will download everything you need to replicate my experi
 
 The TEMPO annotations will have the following fields:
 
-* annotation_id: Each annotation_id is asigned as {temporal_word}\_{didemo_id} where the temporal_word is "before", "after", "then" or (in TEMPO-HL) "while".  The didemo_id is the didemo id for the context moment. 
+* annotation_id: Each annotation_id is asigned as {temporal_word}\_{didemo_id}\_{N} where the temporal_word is "before", "after", "then" or (in TEMPO-HL) "while".  The didemo_id is the didemo id for the context moment. In TEMPO-TL, there are multiple temporal sentences for each DiDeMo context moement which we identify with N.
 * context: The ground truth context for the sentence.
 * description
 * reference_description: Reference description given to the AMT workers.  Note that we did not provide reference descriptions when collecting "while" annotations.  For "then" annotations in TEMPO-TL there will be two reference descriptions.
