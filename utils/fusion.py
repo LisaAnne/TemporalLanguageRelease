@@ -50,7 +50,7 @@ def get_data(split):
                          (('before'), [d for d in data if u'before' in d['annotation_id']]),
                          (('after'), [d for d in data if u'after' in d['annotation_id']]),
                          (('then'), [d for d in data if u'then' in d['annotation_id']])]
-    if 'tempoHL' in args.dataset:
+    elif 'tempoHL' in args.dataset:
 
         eval_datasets = [(('didemo'), [d for d in data if d['annotation_id'].split('_')[0] not in \
                          set([u'before', u'after', u'then'])]),
