@@ -74,7 +74,8 @@ BATCH_SIZE=120
 snapshot_folder=release_models
 loc_flag=loc
 loss='ranking'
-strong_supervise=false
+strong_supervise_flag=no_strong_supervise
+context_tef_flag=no_context_tef
 
 if [ "$dataset" == tempoTL ]; then
     TRAIN_JSON=initial_release_data/tempoTL+didemo_train.json
@@ -106,11 +107,12 @@ if [ "$model" == mllc ]; then
     VISUAL_EMBEDDING_DIM_2=''
     LANGUAGE_EMBEDDING_DIM_1=1000
     LANGUAGE_EMBEDDING_DIM_2=500
-    strong_supervise=true
+    context_tef_flag=context_tef
+    strong_supervise_flag=strong_supervise
 elif [ "$model" == mllc-ws ]; then
     INPUT_VISUAL_DATA="clip"
     VISION_LAYERS=1
-    FEATURE_PROCESS_VISUAL=feature_process_before_after
+    FEATURE_PROCESS_VISUAL=feature_process_norm
     LOSS_TYPE=triplet
     DISTANCE_FUNCTION=early_combine_mult
     LW_INTER=0.2
@@ -121,7 +123,7 @@ elif [ "$model" == mllc-ws ]; then
 elif [ "$model" == mllc-ws-conTEF ]; then
     INPUT_VISUAL_DATA="clip"
     VISION_LAYERS=1
-    FEATURE_PROCESS_VISUAL=feature_process_before_after
+    FEATURE_PROCESS_VISUAL=feature_process_norm
     LOSS_TYPE=triplet
     DISTANCE_FUNCTION=early_combine_mult
     LW_INTER=0.2
@@ -132,7 +134,7 @@ elif [ "$model" == mllc-ws-conTEF ]; then
 elif [ "$model" == mllc-ss ]; then
     INPUT_VISUAL_DATA="clip"
     VISION_LAYERS=1
-    FEATURE_PROCESS_VISUAL=feature_process_before_after
+    FEATURE_PROCESS_VISUAL=feature_process_norm
     LOSS_TYPE=triplet
     DISTANCE_FUNCTION=early_combine_mult
     LW_INTER=0.2
@@ -140,7 +142,8 @@ elif [ "$model" == mllc-ss ]; then
     VISUAL_EMBEDDING_DIM_2=''
     LANGUAGE_EMBEDDING_DIM_1=1000
     LANGUAGE_EMBEDDING_DIM_2=500
-    strong_supervise=true
+    context_tef_flag=context_tef
+    strong_supervise_flag=strong_supervise
 elif [ "$model" == mllc-ba ]; then
     INPUT_VISUAL_DATA="clip"
     VISION_LAYERS=1
@@ -242,66 +245,36 @@ TRAIN_H5=$data
 TEST_H5=$data
 
 #train, eval on val
-if [ "$strong_supervise" == true ]; then 
-    python utils/build_net.py --feature_process_visual $FEATURE_PROCESS_VISUAL  \
-                        --$loc_flag \
-                        --vision_layers $VISION_LAYERS \
-                        --dropout_visual $DROPOUT_VISUAL \
-                        --dropout_language $DROPOUT_LANGUAGE \
-                        --language_layers $LANGUAGE_LAYERS \
-                        --feature_process_language $FEATURE_PROCESS_LANGUAGE \
-                        --visual_embedding_dim $VISUAL_EMBEDDING_DIM_1 $VISUAL_EMBEDDING_DIM_2 \
-                        --language_embedding_dim $LANGUAGE_EMBEDDING_DIM_1 $LANGUAGE_EMBEDDING_DIM_2 \
-                        --gpu $gpu \
-                        --max_iter $MAX_ITER \
-                        --snapshot $SNAPSHOT \
-                        --stepsize $MAX_ITER \
-                        --base_lr $BASE_LR \
-                        --train_json $TRAIN_JSON \
-                        --test_json $VAL_JSON \
-                        --train_h5 $TRAIN_H5 \
-                        --test_h5 $TEST_H5 \
-                        --random_seed $RANDOM_SEED \
-                        --loss_type $LOSS_TYPE \
-                        --lw_inter $LW_INTER \
-                        --batch_size $BATCH_SIZE \
-                        --distance_function $DISTANCE_FUNCTION \
-                        --pool_type max \
-                        --input_visual_data $INPUT_VISUAL_DATA \
-                        --snapshot_folder $snapshot_folder \
-                        --tag $tag \
-                        --strong_supervise \
-                        --train
-else
-    python utils/build_net.py --feature_process_visual $FEATURE_PROCESS_VISUAL  \
-                        --$loc_flag \
-                        --vision_layers $VISION_LAYERS \
-                        --dropout_visual $DROPOUT_VISUAL \
-                        --dropout_language $DROPOUT_LANGUAGE \
-                        --language_layers $LANGUAGE_LAYERS \
-                        --feature_process_language $FEATURE_PROCESS_LANGUAGE \
-                        --visual_embedding_dim $VISUAL_EMBEDDING_DIM_1 $VISUAL_EMBEDDING_DIM_2 \
-                        --language_embedding_dim $LANGUAGE_EMBEDDING_DIM_1 $LANGUAGE_EMBEDDING_DIM_2 \
-                        --gpu $gpu \
-                        --max_iter $MAX_ITER \
-                        --snapshot $SNAPSHOT \
-                        --stepsize $MAX_ITER \
-                        --base_lr $BASE_LR \
-                        --train_json $TRAIN_JSON \
-                        --test_json $VAL_JSON \
-                        --train_h5 $TRAIN_H5 \
-                        --test_h5 $TEST_H5 \
-                        --random_seed $RANDOM_SEED \
-                        --loss_type $LOSS_TYPE \
-                        --lw_inter $LW_INTER \
-                        --batch_size $BATCH_SIZE \
-                        --distance_function $DISTANCE_FUNCTION \
-                        --pool_type max \
-                        --input_visual_data $INPUT_VISUAL_DATA \
-                        --snapshot_folder $snapshot_folder \
-                        --tag $tag \
-                        --train
-fi
+python utils/build_net.py --feature_process_visual $FEATURE_PROCESS_VISUAL  \
+                    --$loc_flag \
+                    --vision_layers $VISION_LAYERS \
+                    --dropout_visual $DROPOUT_VISUAL \
+                    --dropout_language $DROPOUT_LANGUAGE \
+                    --language_layers $LANGUAGE_LAYERS \
+                    --feature_process_language $FEATURE_PROCESS_LANGUAGE \
+                    --visual_embedding_dim $VISUAL_EMBEDDING_DIM_1 $VISUAL_EMBEDDING_DIM_2 \
+                    --language_embedding_dim $LANGUAGE_EMBEDDING_DIM_1 $LANGUAGE_EMBEDDING_DIM_2 \
+                    --gpu $gpu \
+                    --max_iter $MAX_ITER \
+                    --snapshot $SNAPSHOT \
+                    --stepsize $MAX_ITER \
+                    --base_lr $BASE_LR \
+                    --train_json $TRAIN_JSON \
+                    --test_json $VAL_JSON \
+                    --train_h5 $TRAIN_H5 \
+                    --test_h5 $TEST_H5 \
+                    --random_seed $RANDOM_SEED \
+                    --loss_type $LOSS_TYPE \
+                    --lw_inter $LW_INTER \
+                    --batch_size $BATCH_SIZE \
+                    --distance_function $DISTANCE_FUNCTION \
+                    --pool_type max \
+                    --input_visual_data $INPUT_VISUAL_DATA \
+                    --snapshot_folder $snapshot_folder \
+                    --tag $tag \
+                    --$context_tef_flag \
+                    --$strong_supervise_flag \
+                    --train
 
 echo "Trained model: " $model
 echo "On dataset: " $dataset

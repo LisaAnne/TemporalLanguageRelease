@@ -91,9 +91,9 @@ if [ "$model" == mllc ]; then
     rgb=$dataset/emnlp2018_rgb_mllc_$dataset
     flow=$dataset/emnlp2018_flow_mllc_$dataset
 elif [ "$model" == mllc-ws ]; then
-    INPUT_VISUAL_DATA="clip"
+    INPUT_VISUAL_DATA="relational"
     VISION_LAYERS=1
-    FEATURE_PROCESS_VISUAL=feature_process_before_after
+    FEATURE_PROCESS_VISUAL=feature_process_norm
     LOSS_TYPE=triplet
     DISTANCE_FUNCTION=early_combine_mult
     LW_INTER=0.2
@@ -108,9 +108,9 @@ elif [ "$model" == mllc-ws ]; then
         exit 1
     fi
 elif [ "$model" == mllc-ws-conTEF ]; then
-    INPUT_VISUAL_DATA="clip"
+    INPUT_VISUAL_DATA="relational"
     VISION_LAYERS=1
-    FEATURE_PROCESS_VISUAL=feature_process_before_after
+    FEATURE_PROCESS_VISUAL=feature_process_norm
     LOSS_TYPE=triplet
     DISTANCE_FUNCTION=early_combine_mult
     LW_INTER=0.2
@@ -125,9 +125,9 @@ elif [ "$model" == mllc-ws-conTEF ]; then
         exit 1
     fi
 elif [ "$model" == mllc-ss ]; then
-    INPUT_VISUAL_DATA="clip"
+    INPUT_VISUAL_DATA="relational"
     VISION_LAYERS=1
-    FEATURE_PROCESS_VISUAL=feature_process_before_after
+    FEATURE_PROCESS_VISUAL=feature_process_norm
     LOSS_TYPE=triplet
     DISTANCE_FUNCTION=early_combine_mult
     LW_INTER=0.2

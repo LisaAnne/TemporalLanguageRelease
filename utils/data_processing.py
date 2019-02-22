@@ -363,7 +363,6 @@ class extractRelationalClipFeatures(extractData):
     return video_features
 
   def get_data(self, next_batch):
-
     self.internal_iteration += 1
     feature_process = self.feature_process
     data = self.dataset
@@ -437,12 +436,17 @@ class extractRelationalClipFeatures(extractData):
             features_global_p[i,0,:] = features_global_p[i,idx,:].copy()
             features_global_p[i,idx,:] = idx0 
             strong_supervision_loss[i] = self.supervise_lw
- 
+
     assert not math.isnan(np.mean(features_p))
 
     if self.inter:
       assert not math.isnan(np.mean(features_inter))
       assert not math.isnan(np.mean(features_global_inter))
+
+    #This is less than ideal in terms of code neatness.  I create context TEF features in "build_net.py" by subtracting the global feature from the moment feature.  To create a model with no tef, I just zero our the tef for the global features.  In effect, this just means that the moment TEF features will be replicated.
+    if self.params['no_context_tef']:
+      features_global_p[:,:,-2:] = 0
+      features_global_inter[:,:,-2:] = 0
 
     self.result[self.feature_p] = features_p
     self.result[self.feature_n] = features_n

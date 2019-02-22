@@ -27,6 +27,10 @@ if [ $quick == false ] ; then
     ./experiments/eval_released.sh -D $dataset -G $gpu -M mllc-global #base mllc model with context features
 fi
 
+echo ""
+echo ""
+echo ""
+
 echo "RESULTS: MCN (row 1)"
 python utils/fusion.py --rgb_tag $dataset/emnlp2018_rgb_mcn_$dataset \
                        --flow_tag $dataset/emnlp2018_flow_mcn_$dataset \
@@ -70,7 +74,7 @@ python utils/fusion.py --rgb_tag $dataset/emnlp2018_rgb_mcn-tall-sim_$dataset \
                        --set val \
                        --quiet 
  
-echo "RESULTS: MCN w/Mult feature, no norm (row 6)"
+echo "RESULTS: MCN w/Mult feature, no norm (row 5)"
 python utils/fusion.py --rgb_tag $dataset/emnlp2018_rgb_mcn-mult-no-norm_$dataset \
                        --flow_tag $dataset/emnlp2018_flow_mcn-mult-no-norm_$dataset \
                        --iter 45000 \
