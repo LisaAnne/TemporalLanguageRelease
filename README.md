@@ -29,7 +29,7 @@ Run [setup.sh](setup.sh) to download pre-extracted features, data (TEMPO-HL and 
 
 **Replicating Results**
 
-The bash scripts ```table3.sh```, ```table4.sh```, and ```table5.sh``` should replicate the results corresponding to those tables in the main paper.  The scripts call on ```experiments/eval_released.sh``` which is documented below.
+The bash scripts ```table3.sh```, ```table4.sh```, and ```table5.sh``` should replicate the results corresponding to those tables in the main paper.  The scripts call on ```experiments/eval_released.sh``` which is documented below.  Some of the numbers are different because I caught small bugs during clean up.  However, the numbers should be very close to the numbers reported in the paper.  See logs in ```outfiles``` folder if you would like to double check that your numbers match mine.
 
 **Evaluating Released Models**
 
@@ -46,7 +46,6 @@ To evaluate released models, look at ```experiments/eval_released.sh```.  This b
 
 Run ```./experiments/eval_released.sh -H``` for help.
 
-Take a look at ```table3.sh```, ```table4.sh``` and ```table5.sh``` to see how to use ```experiments/eval_released.sh```.  By running ```table3.sh```, ```table4.sh``` and ```table5.sh``` you should be able to replicate the results corresponding to those tables in the paper.  Some of the numbers are different because I caught small bugs during clean up.  However, the numbers should be very close to the numbers reported in the paper.  I have output files corresponding to each of these bash scripts in ```outfiles``` if you would like to check that you are getting the same numbers as me.
 
 **Training Your Own Models**
 
