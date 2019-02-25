@@ -46,7 +46,7 @@ To evaluate released models, look at ```experiments/eval_released.sh```.  This b
 
 Run ```./experiments/eval_released.sh -H``` for help.
 
-Some of the numbers are different because I caught small bugs during clean up.  However, the numbers should be very close to the numbers reported in the paper.
+Take a look at ```table3.sh```, ```table4.sh``` and ```table5.sh``` to see how to use ```experiments/eval_released.sh```.  By running ```table3.sh```, ```table4.sh``` and ```table5.sh``` you should be able to replicate the results corresponding to those tables in the paper.  Some of the numbers are different because I caught small bugs during clean up.  However, the numbers should be very close to the numbers reported in the paper.  I have output files corresponding to each of these bash scripts in ```outfiles``` if you would like to check that you are getting the same numbers as me.
 
 **Training Your Own Models**
 
