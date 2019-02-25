@@ -104,6 +104,7 @@ def test_model(deploy_net, snapshot_tag,
                save_context=False,
                snapshot_folder='snapshots'):
 
+
     #prep features to create vision/language feature extractors 
     language_extractor_fcn = extractRecurrentLanguageFeaturesEfficient
     params['bog_key'] = 'BoG'
@@ -128,7 +129,7 @@ def test_model(deploy_net, snapshot_tag,
     possible_segments = visual_feature_extractor.possible_annotations
   
     snapshot = '%s/%s_iter_%%d.caffemodel' %(snapshot_folder, snapshot_tag)
-  
+
     all_sorted_segments = []
     all_scores = []
     if save_context:
@@ -202,7 +203,7 @@ def test_model(deploy_net, snapshot_tag,
       rank1, rank5, miou = eval_predictions(all_sorted_segments[count], data)
       write_raw_results(iter, data, all_sorted_segments[count], test_json, snapshot_tag)
       if save_context:
-          write_raw_results(iter, data, all_context_segments[count], test_json, 'context_'+snapshot_tag)
+          write_raw_results(iter, data, all_context_segments[count], test_json, snapshot_tag+'_context')
           context_dict = {}
           if 'test' in test_json:
             test_or_train = 'test'
@@ -212,6 +213,5 @@ def test_model(deploy_net, snapshot_tag,
             test_or_train = 'train'
           for t, v in zip(data, all_context_raw_values[count]):
               context_dict[t['annotation_id']] = v
-          pkl.dump(context_dict, open('context_pkls/%s_%s_%d.p' %(snapshot_tag, test_or_train, iter), 'wb')) 
       write_raw_scores(iter, data, all_scores[count], test_json, snapshot_tag)
       count += 1
