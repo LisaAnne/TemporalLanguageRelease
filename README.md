@@ -23,7 +23,7 @@ I trained all my models with the [BVLC caffe version](https://github.com/BVLC/ca
 
 **Getting Started**
 
-Run [setup.sh](setup.sh) to download pre-extracted features, data (TEMPO-HL and TEMPO-TL), and pre-trained models.  If you are only interested in the data (not using/replicating my code), please download the datasets [here](https://people.eecs.berkeley.edu/~lisa_anne/initial_release_data.zip).
+Run [setup.sh](setup.sh) to download pre-extracted features, data (TEMPO-HL and TEMPO-TL), and pre-trained models.  If you are only interested in the data (not using/replicating my code), please download the datasets [here](https://people.eecs.berkeley.edu/~lisa_anne/tempo/initial_release_data.zip).
 
 ### Training and Evaluating Models
 
