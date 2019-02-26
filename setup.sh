@@ -14,7 +14,7 @@ mkdir -p cache_results/didemo
 cd data
 
 #Download pre-processed TempoHL, TempoTL, and DiDeMo 
-wget https://people.eecs.berkeley.edu/~lisa_anne/initial_release_data.zip
+wget https://people.eecs.berkeley.edu/~lisa_anne/tempo/initial_release_data.zip
 unzip initial_release_data.zip
 mv initial_release_data/* .
 rm -r initial_release_data
