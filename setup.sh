@@ -26,8 +26,7 @@ wget https://people.eecs.berkeley.edu/~lisa_anne/tempo/average_flow_feats.h5
 #Download pre-released models: 
 wget https://people.eecs.berkeley.edu/~lisa_anne/tempo/release_models.zip
 unzip release_models.zip
-mv release_models/* .
-rm -r release_models 
+rm release_models.zip 
 
 #Download glove embeddings
 wget http://nlp.stanford.edu/data/glove.6B.zip
