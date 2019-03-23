@@ -17,7 +17,7 @@ cd data
 wget https://people.eecs.berkeley.edu/~lisa_anne/tempo/initial_release_data.zip
 unzip initial_release_data.zip
 mv initial_release_data/* .
-rm -r initial_release_data
+rm -r initial_release_data.zip
 
 #Download prereleased features
 wget https://people.eecs.berkeley.edu/~lisa_anne/tempo/average_rgb_feats.h5
