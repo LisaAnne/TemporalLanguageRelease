@@ -24,12 +24,6 @@ rm -r initial_release_data
 wget https://people.eecs.berkeley.edu/~lisa_anne/tempo/average_rgb_feats.h5
 wget https://people.eecs.berkeley.edu/~lisa_anne/tempo/average_flow_feats.h5
 
-#Download pre-released models:
-cd ..
-wget https://people.eecs.berkeley.edu/~lisa_anne/tempo/release_models.zip
-unzip release_models.zip
-rm release_models.zip 
-
 #Download glove embeddings
 wget http://nlp.stanford.edu/data/glove.6B.zip
 unzip glove.6B.zip
@@ -37,4 +31,9 @@ rm glove.6B.50d.txt
 rm glove.6B.100d.txt
 rm glove.6B.200d.txt
 
+#Download pre-released models:
 cd ..
+wget https://people.eecs.berkeley.edu/~lisa_anne/tempo/release_models.zip
+unzip release_models.zip
+rm release_models.zip 
+
