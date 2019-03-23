@@ -18,12 +18,14 @@ wget https://people.eecs.berkeley.edu/~lisa_anne/tempo/initial_release_data.zip
 unzip initial_release_data.zip
 mv initial_release_data/* .
 rm -r initial_release_data.zip
+rm -r initial_release_data
 
 #Download prereleased features
 wget https://people.eecs.berkeley.edu/~lisa_anne/tempo/average_rgb_feats.h5
 wget https://people.eecs.berkeley.edu/~lisa_anne/tempo/average_flow_feats.h5
 
-#Download pre-released models: 
+#Download pre-released models:
+cd ..
 wget https://people.eecs.berkeley.edu/~lisa_anne/tempo/release_models.zip
 unzip release_models.zip
 rm release_models.zip 
