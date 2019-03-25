@@ -60,7 +60,7 @@ You train and evaluate models using scripts in the ```experiments``` folder.  To
 An example command is:
 
 ```
-./experiments/train.sh -M mllc -D Tempo-HL -F flow -G 0
+./experiments/train.sh -M mllc -D tempoHL -F flow -G 0
 ```
 This will train an mllc flow model.  
 
@@ -81,7 +81,7 @@ To evaluate models, look at the ```experiments/eval.sh```.  This bash script tak
 An example command is:
 
 ```
-./experiments/eval.sh -M mllc -D Tempo-HL -F retrain_mllc_flow -R retrain_mllc_rgb -G 0 -Q
+./experiments/eval.sh -M mllc -D tempoHL -F retrain_mllc_flow -R retrain_mllc_rgb -G 0 -Q
 ```
 
 Note that if the models corresponding to ```retrain_mllc_flow``` and ```retrain_mllc_rgb``` have never been evaluated before, running with ```-Q``` will throw an error.
