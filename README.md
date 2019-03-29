@@ -63,8 +63,7 @@ Example commands are:
 ./experiments/train.sh -M mllc -D tempoHL -F rgb -G 0
 ./experiments/train.sh -M mllc -D tempoHL -F flow -G 1
 ```
-The first command trains mllc on tempoHL with rgb features on GPU 0 and the second command trains mllc on tempoHL with flow features on GPU 1.  
-Snapshots will automatically be saved into the ```snapshots``` folder with tags ```rgb_mllc_tempoHL``` and ```flow_mllc_tempoHL```
+The first command trains mllc on tempoHL with rgb features on GPU 0 and the second command trains mllc on tempoHL with flow features on GPU 1.  Snapshots will automatically be saved into the ```snapshots``` folder with tags ```rgb_mllc_tempoHL``` and ```flow_mllc_tempoHL```
 
 Run ```./experiments/train.sh -H``` for help.
 
