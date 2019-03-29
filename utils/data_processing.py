@@ -444,7 +444,7 @@ class extractRelationalClipFeatures(extractData):
       assert not math.isnan(np.mean(features_global_inter))
 
     #This is less than ideal in terms of code neatness.  I create context TEF features in "build_net.py" by subtracting the global feature from the moment feature.  To create a model with no tef, I just zero our the tef for the global features.  In effect, this just means that the moment TEF features will be replicated.
-    if self.params['no_context_tef']:
+    if not self.params['context_tef']:
       features_global_p[:,:,-2:] = 0
       features_global_inter[:,:,-2:] = 0
 

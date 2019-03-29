@@ -46,6 +46,10 @@ if [[ -z $gpu ]] ; then
     echo 'Did not indicate GPU: using default GPU (0)'
     gpu=0
 fi
+if [[ -z $snapshot_folder ]] ; then
+    echo 'Did not indicate snapshot folder: using default GPU ("snapshots")'
+    snapshot_folder=snapshots
+fi
 
 echo "GPU: " $gpu
 echo "Evaluating model: " $model
@@ -64,7 +68,6 @@ BASE_LR=0.05
 RANDOM_SEED=1701
 LW_INTER=0.2
 BATCH_SIZE=120
-snapshot_folder=release_models
 loc_flag=loc
 test_set='val+test'
 loss='ranking'
@@ -360,6 +363,7 @@ if [ $quick == false ] ; then
                         --snapshot_folder $snapshot_folder \
                         --strong_supervise \
                         --input_visual_data $INPUT_VISUAL_DATA \
+                        --snapshot_folder=$snapshot_folder \
                         --tag $flow 
     
 fi

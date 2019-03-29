@@ -400,6 +400,7 @@ if [ $quick == false ] ; then
                         --snapshot_folder $snapshot_folder \
                         --strong_supervise \
                         --input_visual_data $INPUT_VISUAL_DATA \
+                        --snapshot_folder $snapshot_folder \
                         --tag $flow 
     
 fi

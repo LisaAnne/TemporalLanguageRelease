@@ -790,6 +790,7 @@ if __name__ == "__main__":
   params['global_supervision'] = args.global_supervision
   params['decay_context_supervision'] = args.decay_context_supervision
   params['python_random_seed'] = args.python_random_seed
+  params['context_tef'] = args.context_tef
 
   #Create a dict with all the top names for the data layer.
   if args.input_visual_data == 'clip':

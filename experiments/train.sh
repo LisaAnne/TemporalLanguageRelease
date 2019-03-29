@@ -58,7 +58,7 @@ else
     echo "Must choose input type (flow or rgb)" 
 fi
 
-tag=$mode_$model_$dataset
+tag=$mode\_$model\_$dataset
 
 DROPOUT_VISUAL=0.3
 DROPOUT_LANGUAGE=0.3
@@ -71,24 +71,24 @@ BASE_LR=0.05
 RANDOM_SEED=1701
 LW_INTER=0.2
 BATCH_SIZE=120
-snapshot_folder=release_models
+snapshot_folder=snapshots
 loc_flag=loc
 loss='ranking'
 strong_supervise_flag=no_strong_supervise
 context_tef_flag=no_context_tef
 
 if [ "$dataset" == tempoTL ]; then
-    TRAIN_JSON=initial_release_data/tempoTL+didemo_train.json
-    VAL_JSON=initial_release_data/tempoTL+didemo_val.json
-    TEST_JSON=initial_release_data/tempoTL+didemo_test.json
+    TRAIN_JSON=data/tempoTL+didemo_train.json
+    VAL_JSON=data/tempoTL+didemo_val.json
+    TEST_JSON=data/tempoTL+didemo_test.json
 elif [ "$dataset" == tempoHL ]; then
-    TRAIN_JSON=initial_release_data/tempoHL+didemo_train.json
-    VAL_JSON=initial_release_data/tempoHL+didemo_val.json
-    TEST_JSON=initial_release_data/tempoHL+didemo_test.json
+    TRAIN_JSON=data/tempoHL+didemo_train.json
+    VAL_JSON=data/tempoHL+didemo_val.json
+    TEST_JSON=data/tempoHL+didemo_test.json
 elif [ "$dataset" == didemo ]; then
-    TRAIN_JSON=initial_release_data/didemo_train.json
-    VAL_JSON=initial_release_data/didemo_val.json
-    TEST_JSON=initial_release_data/didemo_test.json
+    TRAIN_JSON=data/didemo_train.json
+    VAL_JSON=data/didemo_val.json
+    TEST_JSON=data/didemo_test.json
 else
     echo "-D (dataset) must be 'tempoTL', 'tempoHL' or 'didemo'"
     exit 1
@@ -257,7 +257,7 @@ python utils/build_net.py --feature_process_visual $FEATURE_PROCESS_VISUAL  \
                     --gpu $gpu \
                     --max_iter $MAX_ITER \
                     --snapshot $SNAPSHOT \
-                    --stepsize $MAX_ITER \
+                    --stepsize $STEPSIZE \
                     --base_lr $BASE_LR \
                     --train_json $TRAIN_JSON \
                     --test_json $VAL_JSON \
